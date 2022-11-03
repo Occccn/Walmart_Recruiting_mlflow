@@ -1,0 +1,17 @@
+version: '3'
+services:
+  analysisplatform:
+    #containernameは付けた方が便利
+    container_name: analysisplatform
+    build: .
+    #https://qiita.com/y518gaku/items/456f34c317a65a9dae86
+    volumes:
+      - ./src:/usr/walmart/src
+      - ./data:/usr/walmart/data
+    #コンテナ落とさないため,他にいいやり方ある？？
+    tty: true
+    #特定のIPからのアクセスだけ許可したい時ってどうしたらいい？？ホスト側からのlocalhostだけを許可したい
+    ports:
+      - 8888:8888
+    command:
+      jupyter-lab --ip 0.0.0.0 --allow-root --NotebookApp.token=''

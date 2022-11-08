@@ -1,17 +1,35 @@
 version: '3'
 services:
-  analysisplatform:
+  notebook:
     #containernameは付けた方が便利
-    container_name: analysisplatform
+    container_name: notebook
     build: .
     #https://qiita.com/y518gaku/items/456f34c317a65a9dae86
     volumes:
       - ./src:/usr/walmart/src
       - ./data:/usr/walmart/data
+      - ./notebook:/usr/walmart/notebook
+      - ./mlruns:/usr/walmart/mlruns
     #コンテナ落とさないため,他にいいやり方ある？？
     tty: true
     #特定のIPからのアクセスだけ許可したい時ってどうしたらいい？？ホスト側からのlocalhostだけを許可したい
     ports:
       - 8888:8888
+    depends_on:
+      - mlflow
     command:
       jupyter-lab --ip 0.0.0.0 --allow-root --NotebookApp.token=''
+
+  mlflow:
+    #containernameは付けた方が便利
+    container_name: mlflow
+    build: .
+    # volumes:
+      # - ./src:/usr/walmart/src
+      # - ./data:/usr/walmart/data
+      # - ./mlruns:/usr/walmart/mlruns
+    expose:
+      - "5000"
+    ports:
+      - "5000:5000"
+    command: mlflow server --backend-store-uri /walmart/mlruns --default-artifact-root /walmart/mlruns --host 0.0.0.0 --port 5000

@@ -1,3 +1,6 @@
-data/*
-!.gitkeep
+data/raw
+data/features
+
+!data/raw/.gitkeep
+!data/features/.gitkeep
 

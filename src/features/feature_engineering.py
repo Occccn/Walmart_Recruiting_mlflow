@@ -11,7 +11,7 @@ class Feature():
     
     def __init__(self):
         self.parent = '../../'
-        self.feature_pth = 'data/feature/'
+        self.feature_pth = 'data/features/'
         self.raw_pth = 'data/raw/'
         self.file_dir = self.__class__.__name__ 
         if not os.path.exists(self.parent + self.feature_pth + self.file_dir):
@@ -22,8 +22,14 @@ class Feature():
         
     def get_dataset(self):
         #データの読み込み
-        self.train_df = pd.read_parquet(self.parent + self.raw_pth + 'train.parquet')
-        self.test_df  = pd.read_parquet(self.parent + self.raw_pth + 'test.parquet')
+        train    = pd.read_csv(self.parent + self.raw_pth + 'train.csv')
+        test     = pd.read_csv(self.parent + self.raw_pth + 'test.csv')
+        stores   = pd.read_csv(self.parent + self.raw_pth + 'stores.csv')
+        features = pd.read_csv(self.parent + self.raw_pth + 'features.csv')
+        
+        feature_store = pd.merge(features, stores       , how='inner', on = "Store")
+        self.train_df = pd.merge(train   , feature_store, how='inner', on = ['Store','Date','IsHoliday']).sort_values(by = ['Store','Dept','Date']).reset_index(drop=True)
+        self.test_df  = pd.merge(test    , feature_store, how='inner', on = ['Store','Date','IsHoliday']).sort_values(by = ['Store','Dept','Date']).reset_index(drop=True)
         return self.train_df, self.test_df
         
         
@@ -45,6 +51,7 @@ class Feature():
             return data
     
     def run(self):
+        #学習データ作成
         print('creating train features...')
         df_processed , columns = self.create_features(self.train_df)
         print('finished!')
@@ -53,6 +60,8 @@ class Feature():
         for col in columns:
             self.save(df_processed , col ,'train')
         print('finished!')  
+        
+        #テストデータ作成
         print('creating test features...')
         df_processed , columns = self.create_features(self.test_df)
         print('finished!')

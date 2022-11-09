@@ -4,7 +4,7 @@ from feature_engineering import *
 class Basic_Continuous(Feature):
 
     def create_features(self, df):
-        df = df[['Type' , 'IsHoliday']]
+        df = df[['Temperature','Fuel_Price','MarkDown1','MarkDown2','MarkDown3','MarkDown4','MarkDown5','CPI','Unemployment','Size']]
         return df , df.columns
 
 

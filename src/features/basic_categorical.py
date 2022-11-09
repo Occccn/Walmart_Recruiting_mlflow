@@ -2,7 +2,7 @@ from feature_engineering import *
 from sklearn.preprocessing import LabelEncoder
 
 
-class Basic_Continuous(Feature):
+class Basic_Categorical(Feature):
 
     def create_features(self, df):
         class_le = LabelEncoder()
@@ -14,7 +14,7 @@ class Basic_Continuous(Feature):
 
 
 def main():            
-    sample = Basic_Continuous()
+    sample = Basic_Categorical()
     sample.get_dataset()
     sample.run()
 

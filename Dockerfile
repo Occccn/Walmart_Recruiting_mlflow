@@ -10,4 +10,6 @@ RUN pip install jupyterlab \
 &&  pip install pandas \
 &&  pip install numpy \
 &&  pip install sklearn\
-&&  pip install mlflow
+&&  pip install mlflow\
+&&  pip install lightgbm\
+&&  pip install optuna

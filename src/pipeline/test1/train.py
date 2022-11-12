@@ -7,7 +7,7 @@ import gc
 import os
 import yaml
 
-from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import TimeSeriesSplit
 from utils import *
 import lightgbm as lgb
 import optuna
@@ -19,7 +19,11 @@ warnings.filterwarnings('ignore')
 #     y_true = data.get_label()
 #     acc = amex_metric(y_true, preds)
 #     return ('custom_accuracy', acc, True)
+def compute_weights(holidays):
+    return holidays.apply(lambda x: 1 if x==0 else 5)
 
+def weighted_mean_absolute_error(pred_y, test_y, weights):
+    return 1/sum(weights) * sum(weights * abs(test_y - pred_y))
 
 class LGBM_baseline():
     def __init__(self, CFG, logger = None) -> None:
@@ -29,7 +33,7 @@ class LGBM_baseline():
         self.feature_groups_path = CFG['feature_groups_path']
         self.using_features = CFG['using_features']
         self.output_dir = CFG['output_dir']
-
+        
         self.train = self.create_train()
         self.target = self.create_target()
         self.features = self.train.columns
@@ -56,7 +60,7 @@ class LGBM_baseline():
             if feature_name == 'all':
                 feature_name = glob.glob(self.features_path + f'/{dirname}/train/*')
                 feature_name = [os.path.splitext(os.path.basename(F))[0]
-                 for F in feature_name if 'customer_ID' not in F]
+                 for F in feature_name]
 
             elif type(feature_name) == str:
                 file = self.feature_groups_path + f'/{dirname}/{feature_name}.txt'
@@ -80,7 +84,7 @@ class LGBM_baseline():
             if feature_name == 'all':
                 feature_name = glob.glob(self.features_path + f'/{dirname}/train/*')
                 feature_name = [os.path.splitext(os.path.basename(F))[0] 
-                                for F in feature_name if 'customer_ID' not in F]
+                                for F in feature_name]
 
             elif type(feature_name) == str:
                 file = self.feature_groups_path + f'/{dirname}/{feature_name}.txt'
@@ -89,9 +93,6 @@ class LGBM_baseline():
                         for line in f:
                             feature_name.append(line.rstrip("\n"))
 
-            # oofを生成する都合でcustomer_id を入れる
-            if dirname == 'Basic_Stat':
-                feature_name.insert(0, 'customer_ID')
 
             for name in feature_name:
                 filepath = self.features_path + f'/{dirname}/train' + f'/{name}.pickle'
@@ -105,7 +106,7 @@ class LGBM_baseline():
 
     def create_target(self) -> pd.Series:
         label_pth = self.CFG['label_pth']
-        target = pd.read_csv(label_pth).target.values
+        target = pd.read_csv(label_pth).Weekly_Sales.values
         return target
 
 
@@ -117,7 +118,7 @@ class LGBM_baseline():
         boosting_type = self.CFG['OPTUNA_boosting_type']
 
         self.STDOUT('[Optuna parameter tuning]')
-        kf = StratifiedKFold(n_splits=5)
+        kf = TimeSeriesSplit(n_splits=5)
 
         def objective(trial):
             score_list = []
@@ -174,22 +175,21 @@ class LGBM_baseline():
         eval_interval = self.CFG['eval_interval']
         only_first_fold = self.CFG['only_first_fold']
         score_list = []
-        kf = StratifiedKFold(n_splits=5)
+        tss = TimeSeriesSplit(n_splits=5)
         oofs = []
-        for fold, (idx_tr, idx_va) in enumerate(kf.split(self.train, self.target)):
+        for fold, (idx_tr, idx_va) in enumerate(tss.split(self.train)):
             train_x = self.train.iloc[idx_tr][self.features]
             valid_x = self.train.iloc[idx_va][self.features]
             train_y = self.target[idx_tr]
             valid_y = self.target[idx_va]
-            dtrain = lgb.Dataset(train_x.drop(columns = 'customer_ID'), label=train_y)
-            dvalid = lgb.Dataset(valid_x.drop(columns = 'customer_ID'), label=valid_y)
+            dtrain = lgb.Dataset(train_x, label=train_y)
+            dvalid = lgb.Dataset(valid_x, label=valid_y)
 
             gbm = lgb.train(self.best_params, dtrain, valid_sets=[dvalid], 
-                            callbacks=[lgb.log_evaluation(eval_interval)],
-                            feval = [custom_accuracy])
+                            callbacks=[lgb.log_evaluation(eval_interval)])
 
-            preds = gbm.predict(valid_x.drop(columns = 'customer_ID'))
-            score = amex_metric(valid_y, preds)
+            preds = gbm.predict(valid_x)
+            score = weighted_mean_absolute_error(valid_y, preds,compute_weights(self.train.iloc[idx_va]['IsHoliday']))
             score_list.append(score)
             # saving models
             file = self.output_dir + f'/model_fold{fold}.pkl'
@@ -208,29 +208,12 @@ class LGBM_baseline():
             oofs.append(oof)
 
             if self.CFG['show_importance']:
-                importance = pd.DataFrame(gbm.feature_importance(), index=self.features[1:], 
+                importance = pd.DataFrame(gbm.feature_importance(), index=self.features, 
                                           columns=['importance']).sort_values('importance',ascending=False)
                 importance.to_csv(self.output_dir + f'/importance_fold{fold}.csv')           
 
             if only_first_fold: break 
-        
-        # saving oofs
-        if self.CFG['create_oofs']:
-            oofs = pd.concat(oofs).reset_index()
-            oofs.to_feather(self.output_dir + '/oofs.ftr')
-            self.STDOUT('=' * 30)
-            self.STDOUT('OOFs Info')
-            f, t = oofs['predicted_09'].value_counts()
-            self.STDOUT(f'threshold 0.9  True:{t} False:{f}')
-            f, t = oofs['predicted_08'].value_counts()
-            self.STDOUT(f'threshold 0.8  True:{t} False:{f}')
-            f, t = oofs['predicted_07'].value_counts()
-            self.STDOUT(f'threshold 0.7  True:{t} False:{f}')
-            f, t = oofs['predicted_06'].value_counts()
-            self.STDOUT(f'threshold 0.6  True:{t} False:{f}')
-            f, t = oofs['predicted_05'].value_counts()
-            self.STDOUT(f'threshold 0.5  True:{t} False:{f}')
-            self.STDOUT('=' * 30)
+
 
         self.STDOUT(f"OOF Score: {np.mean(score_list):.5f}")
 

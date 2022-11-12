@@ -1,5 +1,9 @@
 data/raw/*
 data/features/*
-
+__pycache__/
+ignore/
+*.pkl
+*.csv
+*.ftr
 !.gitkeep
 

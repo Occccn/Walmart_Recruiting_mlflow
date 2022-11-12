@@ -5,7 +5,7 @@ log : True
 # Directory path settings
 features_path : ../../../data/features
 feature_groups_path : ../../../data/feature_groups
-label_pth : ../../../data/raw/train_labels.csv
+label_pth : ../../../data/raw/target.csv
 
 # Optuna settings
 use_optuna : False
@@ -25,17 +25,17 @@ create_oofs : True
 
 # params
 training_params : {
-  objective : binary,
-  metric : custom,
+  objective : regression,
+  metric : mse,
   n_estimators : 10000,
-  early_stopping_round : 3000,
+  early_stopping_round : 300,
   seed : 42,
-  boosting : dart,
-  learning_rate : 0.01,
+  boosting : gbdt,
+  learning_rate : 0.1,
   force_col_wise : True,
-  lambda_l1 : 1.3885802713402106e-05,
-  lambda_l2 : 0.0004756476873944631,
-  num_leaves : 146,
+  # lambda_l1 : 1.3885802713402106e-05,
+  # lambda_l2 : 0.0004756476873944631,
+  num_leaves : 64,
   feature_fraction : 0.3783431043783493,
   bagging_fraction : 0.6030244532351853,
   bagging_freq : 4,
@@ -47,16 +47,6 @@ training_params : {
 # Feature selection settings
 # value に allと設定した場合、全ての特徴量が使用される
 using_features : {
-  Basic_Stat        : all,
-  Period_Basic_Stat : all,
-  Date              : all,
-  Div_Min_Max : all,
-  Last_mean_diff : all,
-  Lag_diff : all,
-  Max_Min_diff : all,
-  Important_double : all,
-  Important_cross  : all,
-  Important_mix32  : all,
-  Important_mix42  : all,
-  #Shift             : all
+  Basic_Categorical : all,
+  Basic_Continuous : all,
 }

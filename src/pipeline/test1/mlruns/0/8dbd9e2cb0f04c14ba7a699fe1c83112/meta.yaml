@@ -1,0 +1,15 @@
+artifact_uri: file:///usr/walmart/src/pipeline/test1/mlruns/0/8dbd9e2cb0f04c14ba7a699fe1c83112/artifacts
+end_time: 1668487986079
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8dbd9e2cb0f04c14ba7a699fe1c83112
+run_name: whimsical-ram-923
+run_uuid: 8dbd9e2cb0f04c14ba7a699fe1c83112
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1668487985826
+status: 3
+tags: []
+user_id: root

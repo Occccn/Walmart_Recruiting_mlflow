@@ -137,3 +137,393 @@ min_child_samples : 352
 ==============================
 OOF Score: 15380.23844
 successfully saved feature names
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 64
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 8
+min_child_samples : 352
+==============================
+OOF Score: 15380.23844
+successfully saved feature names
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 64
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 8
+min_child_samples : 352
+==============================
+OOF Score: 15380.23844
+successfully saved feature names
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 64
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 8
+min_child_samples : 352
+==============================
+OOF Score: 15381.27575
+successfully saved feature names
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 64
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 8
+min_child_samples : 352
+==============================
+OOF Score: 15381.27575
+successfully saved feature names
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 64
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 8
+min_child_samples : 352
+==============================
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 64
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 8
+min_child_samples : 352
+==============================
+OOF Score: 15380.23844
+successfully saved feature names
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 64
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 8
+min_child_samples : 352
+==============================
+OOF Score: 15380.23844
+successfully saved feature names
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 32
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 4
+min_child_samples : 352
+==============================
+OOF Score: 15429.64355
+successfully saved feature names
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 32
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 4
+min_child_samples : 352
+==============================
+OOF Score: 15429.64355
+successfully saved feature names
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 32
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 4
+min_child_samples : 352
+==============================
+OOF Score: 15429.64355
+successfully saved feature names
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 32
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 4
+min_child_samples : 352
+==============================
+OOF Score: 15429.64355
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 32
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 4
+min_child_samples : 352
+==============================
+OOF Score: 15429.64355
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 32
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 4
+min_child_samples : 352
+==============================
+OOF Score: 15429.64355
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 32
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 4
+min_child_samples : 352
+==============================
+OOF Score: 15429.64355
+successfully saved feature names
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 32
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 4
+min_child_samples : 352
+==============================
+OOF Score: 15429.64355
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 32
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 4
+min_child_samples : 352
+==============================
+OOF Score: 15429.64355
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 32
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 4
+min_child_samples : 352
+==============================
+OOF Score: 15429.64355
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 32
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 4
+min_child_samples : 352
+==============================
+OOF Score: 15429.64355
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 32
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 4
+min_child_samples : 352
+==============================
+OOF Score: 15429.64355
+dataframe_info:  421570 rows, 12 features
+[ TRAINING PARAMS ]
+==============================
+objective : regression
+metric : mse
+n_estimators : 10000
+early_stopping_round : 300
+seed : 42
+boosting : gbdt
+learning_rate : 0.1
+force_col_wise : True
+num_leaves : 32
+feature_fraction : 0.3783431043783493
+bagging_fraction : 0.6030244532351853
+bagging_freq : 4
+max_depth : 4
+min_child_samples : 352
+==============================
+OOF Score: 15429.64355
+successfully saved feature names

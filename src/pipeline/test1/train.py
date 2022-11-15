@@ -11,6 +11,8 @@ from sklearn.model_selection import TimeSeriesSplit
 from utils import *
 import lightgbm as lgb
 import optuna
+import mlflow
+
 
 warnings.filterwarnings('ignore')
 
@@ -216,7 +218,16 @@ class LGBM_baseline():
 
 
         self.STDOUT(f"OOF Score: {np.mean(score_list):.5f}")
+        self.save_mlflow()
 
+    def save_mlflow(self):
+        tracking_uri = "http://mlflow:5000"
+        mlflow.set_tracking_uri(tracking_uri)
+        mlflow.set_experiment('test')
+        mlflow.start_run()
+        mlflow.log_params(self.best_params)
+       # mlflow.end_run()
+        
 
 def main():
     with open('config.yml', 'r') as yml:

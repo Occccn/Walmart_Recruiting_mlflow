@@ -1,0 +1,15 @@
+artifact_uri: /usr/walmart/mlruns/682763683514145606/1807ec49aa9e466b9ee1a0cf4080d6ff/artifacts
+end_time: 1668505337516
+entry_point_name: ''
+experiment_id: '682763683514145606'
+lifecycle_stage: active
+run_id: 1807ec49aa9e466b9ee1a0cf4080d6ff
+run_name: gregarious-shrimp-26
+run_uuid: 1807ec49aa9e466b9ee1a0cf4080d6ff
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1668505337009
+status: 3
+tags: []
+user_id: root

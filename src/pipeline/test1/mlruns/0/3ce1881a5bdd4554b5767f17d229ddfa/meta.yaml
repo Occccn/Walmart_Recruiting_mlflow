@@ -1,0 +1,15 @@
+artifact_uri: file:///usr/walmart/src/pipeline/test1/mlruns/0/3ce1881a5bdd4554b5767f17d229ddfa/artifacts
+end_time: 1668487967270
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3ce1881a5bdd4554b5767f17d229ddfa
+run_name: upset-asp-764
+run_uuid: 3ce1881a5bdd4554b5767f17d229ddfa
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1668487263403
+status: 3
+tags: []
+user_id: root

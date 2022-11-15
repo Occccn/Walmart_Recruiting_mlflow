@@ -1,0 +1,15 @@
+artifact_uri: file:///usr/walmart/src/pipeline/test1/mlruns/1/176efb500d4e4b6aabd8537bb8247ebd/artifacts
+end_time: 1668500004264
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 176efb500d4e4b6aabd8537bb8247ebd
+run_name: monumental-boar-885
+run_uuid: 176efb500d4e4b6aabd8537bb8247ebd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1668500003850
+status: 3
+tags: []
+user_id: root

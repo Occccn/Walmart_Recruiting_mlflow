@@ -1,0 +1,15 @@
+artifact_uri: file:///usr/walmart/src/pipeline/test1/mlruns/1/2e42fe5b5b0143b79f4a31fe8785e86a/artifacts
+end_time: 1668499782930
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 2e42fe5b5b0143b79f4a31fe8785e86a
+run_name: amusing-perch-72
+run_uuid: 2e42fe5b5b0143b79f4a31fe8785e86a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1668499782524
+status: 3
+tags: []
+user_id: root

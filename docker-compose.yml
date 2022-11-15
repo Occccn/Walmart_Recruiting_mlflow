@@ -24,12 +24,10 @@ services:
     #containernameは付けた方が便利
     container_name: mlflow
     build: .
-    # volumes:
-      # - ./src:/usr/walmart/src
-      # - ./data:/usr/walmart/data
-      # - ./mlruns:/usr/walmart/mlruns
-    expose:
-      - "5000"
+    volumes:
+      - ./mlruns:/usr/walmart/mlruns
+    # expose:
+    #   - "5000"
     ports:
       - "5000:5000"
-    command: mlflow server --backend-store-uri /walmart/mlruns --default-artifact-root /walmart/mlruns --host 0.0.0.0 --port 5000
+    command: mlflow server --backend-store-uri /usr/walmart/mlruns --default-artifact-root /usr/walmart/mlruns --host 0.0.0.0 --port 5000

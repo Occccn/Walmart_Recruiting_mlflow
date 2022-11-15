@@ -1,0 +1,1 @@
+{'objective': 'regression', 'metric': 'mse', 'n_estimators': 10000, 'early_stopping_round': 300, 'seed': 42, 'boosting': 'gbdt', 'learning_rate': 0.1, 'force_col_wise': True, 'num_leaves': 64, 'feature_fraction': 0.3783431043783493, 'bagging_fraction': 0.6030244532351853, 'bagging_freq': 4, 'max_depth': 8, 'min_child_samples': 352}

@@ -12,4 +12,5 @@ RUN pip install jupyterlab \
 &&  pip install sklearn\
 &&  pip install mlflow\
 &&  pip install lightgbm\
-&&  pip install optuna
+&&  pip install optuna\
+&&  pip install psycopg2

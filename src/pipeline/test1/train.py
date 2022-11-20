@@ -223,7 +223,7 @@ class LGBM_baseline():
     def save_mlflow(self):
         tracking_uri = "http://mlflow:5000"
         mlflow.set_tracking_uri(tracking_uri)
-        mlflow.set_experiment('test')
+        mlflow.set_experiment('test=postgres')
         mlflow.start_run()
         mlflow.log_params(self.best_params)
        # mlflow.end_run()
